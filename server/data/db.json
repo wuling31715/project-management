@@ -1,0 +1,75 @@
+{
+  "users": [
+    {
+      "id": 1751381166095,
+      "username": "Danny",
+      "password": "Test"
+    },
+    {
+      "id": 1751381169244,
+      "username": "Danny",
+      "password": "Test"
+    },
+    {
+      "id": 1751381172561,
+      "username": "Danny",
+      "password": "Test"
+    },
+    {
+      "id": 1751381172721,
+      "username": "Danny",
+      "password": "Test"
+    },
+    {
+      "id": 1751381172875,
+      "username": "Danny",
+      "password": "Test"
+    },
+    {
+      "id": 1751381173038,
+      "username": "Danny",
+      "password": "Test"
+    },
+    {
+      "id": 1751381173201,
+      "username": "Danny",
+      "password": "Test"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1751381103084,
+      "name": "TESTTT111",
+      "description": "1111",
+      "tasks": [
+        {
+          "name": "r4rt",
+          "startDate": "2025-07-01",
+          "endDate": "2025-07-23"
+        },
+        {
+          "name": "2123123",
+          "startDate": "2025-07-11",
+          "endDate": "2025-07-31"
+        },
+        {
+          "name": "long term project",
+          "startDate": "2025-01-01",
+          "endDate": "2025-07-01"
+        }
+      ]
+    },
+    {
+      "id": 1751381230113,
+      "name": "Project 2",
+      "description": "qwdqwdqwd",
+      "tasks": [
+        {
+          "name": "qwdqwd",
+          "startDate": "2025-07-01",
+          "endDate": "2025-07-24"
+        }
+      ]
+    }
+  ]
+}

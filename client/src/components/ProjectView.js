@@ -54,14 +54,30 @@ const ProjectView = () => {
       <p>{project.description}</p>
 
       <h4>Tasks</h4>
-      <ul>
-        {project.tasks.map((task, index) => (
-          <li key={index}>
-            {task.name} (Start: {task.startDate}, End: {task.endDate}, Assigned to: {task.assignedUser})
-            <button onClick={() => deleteTask(task.id)} className="btn btn-danger btn-sm ml-2">Delete</button>
-          </li>
-        ))}
-      </ul>
+      <table className="table">
+        <thead className="thead-light">
+          <tr>
+            <th>Task Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Assigned To</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {project.tasks.map((task, index) => (
+            <tr key={index}>
+              <td>{task.name}</td>
+              <td>{task.startDate}</td>
+              <td>{task.endDate}</td>
+              <td>{task.assignedUser}</td>
+              <td>
+                <button onClick={() => deleteTask(task.id)} className="btn btn-danger btn-sm">Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
       <h4>Add New Task</h4>
       <form onSubmit={addTask}>

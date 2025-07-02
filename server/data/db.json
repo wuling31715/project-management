@@ -43,18 +43,18 @@
       "description": "GGGG",
       "tasks": [
         {
-          "id": 1751480408804,
-          "name": "Task 3",
-          "startDate": "2025-06-01",
-          "endDate": "2025-07-09",
-          "assignedUser": "Brian"
-        },
-        {
           "id": 1751485783887,
           "name": "Task 1",
           "startDate": "2025-05-07",
           "endDate": "2025-07-30",
           "assignedUser": "Kevin"
+        },
+        {
+          "id": 1751480408804,
+          "name": "Task 3",
+          "startDate": "2025-06-01",
+          "endDate": "2025-07-09",
+          "assignedUser": "Brian"
         },
         {
           "id": 1751480491936,
@@ -71,6 +71,13 @@
           "assignedUser": "Danny"
         },
         {
+          "id": 1751486740885,
+          "name": "Task 6",
+          "startDate": "2025-07-11",
+          "endDate": "2025-07-09",
+          "assignedUser": "Bill"
+        },
+        {
           "id": 1751480048696,
           "name": "Task 5",
           "startDate": "2025-07-17",
@@ -78,11 +85,11 @@
           "assignedUser": "Austin"
         },
         {
-          "id": 1751486740885,
-          "name": "Task 6",
-          "startDate": "2025-07-11",
-          "endDate": "2025-07-09",
-          "assignedUser": "Bill"
+          "id": 1751487056340,
+          "name": "Task 8",
+          "startDate": "2025-07-03",
+          "endDate": "2025-09-11",
+          "assignedUser": "Danny"
         }
       ],
       "manager": "Austin"

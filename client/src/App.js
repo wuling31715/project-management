@@ -4,8 +4,6 @@ import ProjectsList from './components/ProjectsList';
 import CreateProject from './components/CreateProject';
 import ProjectView from './components/ProjectView';
 import GanttChart from './components/GanttChart';
-import Login from './components/Login';
-import Register from './components/Register';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -18,8 +16,6 @@ function App() {
           <Route path="/create" element={<CreateProject />} />
           <Route path="/project/:id" element={<ProjectView />} />
           <Route path="/gantt" element={<GanttChart />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </Router>

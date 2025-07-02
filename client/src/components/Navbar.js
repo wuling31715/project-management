@@ -19,14 +19,6 @@ const Navbar = () => {
               <Link className="nav-link" to="/gantt">Gantt Chart</Link>
             </li>
           </ul>
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">Login</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/register">Register</Link>
-            </li>
-          </ul>
         </div>
       </div>
     </nav>

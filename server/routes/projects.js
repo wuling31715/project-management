@@ -63,4 +63,24 @@ router.route('/update/:id').post((req, res) => {
   }
 });
 
+
+// Delete a task from a project
+router.route('/:id/tasks/:taskId').delete((req, res) => {
+  let db = readDb();
+  const project = db.projects.find(p => p.id === parseInt(req.params.id));
+  if (project) {
+    const initialTasksCount = project.tasks.length;
+    project.tasks = project.tasks.filter(t => t.id !== parseInt(req.params.taskId));
+    if (project.tasks.length < initialTasksCount) {
+      writeDb(db);
+      res.json('Task deleted.');
+    } else {
+      res.status(404).json('Task not found.');
+    }
+  } else {
+    res.status(404).json('Project not found.');
+  }
+});
+
 module.exports = router;
+

@@ -22,7 +22,7 @@ const ProjectView = () => {
 
   const addTask = (e) => {
     e.preventDefault();
-    const newTask = { name: taskName, startDate, endDate };
+    const newTask = { id: Date.now(), name: taskName, startDate, endDate };
     const updatedProject = { ...project, tasks: [...project.tasks, newTask] };
 
     axios.post(`http://localhost:5000/api/projects/update/${id}`, updatedProject)
@@ -35,6 +35,18 @@ const ProjectView = () => {
       });
   }
 
+  const deleteTask = (taskId) => {
+    axios.delete(`http://localhost:5000/api/projects/${id}/tasks/${taskId}`)
+      .then(res => {
+        console.log(res.data);
+        const updatedProject = { ...project, tasks: project.tasks.filter(t => t.id !== taskId) };
+        setProject(updatedProject);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   return (
     <div>
       <h3>{project.name}</h3>
@@ -43,7 +55,10 @@ const ProjectView = () => {
       <h4>Tasks</h4>
       <ul>
         {project.tasks.map((task, index) => (
-          <li key={index}>{task.name} (Start: {task.startDate}, End: {task.endDate})</li>
+          <li key={index}>
+            {task.name} (Start: {task.startDate}, End: {task.endDate}) 
+            <button onClick={() => deleteTask(task.id)} className="btn btn-danger btn-sm ml-2">Delete</button>
+          </li>
         ))}
       </ul>
 

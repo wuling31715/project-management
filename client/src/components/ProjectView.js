@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -8,6 +7,7 @@ const ProjectView = () => {
   const [taskName, setTaskName] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [assignedUser, setAssignedUser] = useState('');
   const { id } = useParams();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const ProjectView = () => {
 
   const addTask = (e) => {
     e.preventDefault();
-    const newTask = { id: Date.now(), name: taskName, startDate, endDate };
+    const newTask = { id: Date.now(), name: taskName, startDate, endDate, assignedUser };
     const updatedProject = { ...project, tasks: [...project.tasks, newTask] };
 
     axios.post(`http://localhost:5000/api/projects/update/${id}`, updatedProject)
@@ -32,6 +32,7 @@ const ProjectView = () => {
         setTaskName('');
         setStartDate('');
         setEndDate('');
+        setAssignedUser('');
       });
   }
 
@@ -56,7 +57,7 @@ const ProjectView = () => {
       <ul>
         {project.tasks.map((task, index) => (
           <li key={index}>
-            {task.name} (Start: {task.startDate}, End: {task.endDate}) 
+            {task.name} (Start: {task.startDate}, End: {task.endDate}, Assigned to: {task.assignedUser})
             <button onClick={() => deleteTask(task.id)} className="btn btn-danger btn-sm ml-2">Delete</button>
           </li>
         ))}
@@ -75,6 +76,10 @@ const ProjectView = () => {
         <div className="form-group">
           <label>End Date: </label>
           <input type="date" required className="form-control" value={endDate} onChange={e => setEndDate(e.target.value)} />
+        </div>
+        <div className="form-group">
+          <label>Assign to: </label>
+          <input type="text" required className="form-control" value={assignedUser} placeholder="Enter username" onChange={e => setAssignedUser(e.target.value)} />
         </div>
         <div className="form-group">
           <input type="submit" value="Add Task" className="btn btn-primary" />

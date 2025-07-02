@@ -15,4 +15,10 @@ const writeDb = (data) => {
   fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
 };
 
+// Get all users
+router.route('/').get((req, res) => {
+  const db = readDb();
+  res.json(db.users);
+});
+
 module.exports = router;

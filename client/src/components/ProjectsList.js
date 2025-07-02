@@ -31,7 +31,8 @@ const ProjectsList = () => {
           <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Actions</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -39,9 +40,8 @@ const ProjectsList = () => {
             <tr key={project.id}>
               <td>{project.name}</td>
               <td>{project.description}</td>
-              <td>
-                <Link to={`/project/${project.id}`}>View</Link> | <a href="#" onClick={() => { deleteProject(project.id) }}>Delete</a>
-              </td>
+              <td><button className="btn btn-primary btn-sm" onClick={() => window.location.href = `/project/${project.id}`}>Edit</button></td>
+              <td><button className="btn btn-danger btn-sm" onClick={() => { deleteProject(project.id) }}>Delete</button></td>
             </tr>
           ))}
         </tbody>

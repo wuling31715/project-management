@@ -20,7 +20,8 @@ const GanttChart = () => {
     const data = [
       [
         { type: 'string', label: 'Task ID' },
-        { type: 'string', label: 'Task Name' },
+        { type: 'string', label: 'Task Name (Assigned User)' },
+        { type: 'string', label: 'Resource' },
         { type: 'date', label: 'Start Date' },
         { type: 'date', label: 'End Date' },
         { type: 'number', label: 'Duration' },
@@ -32,7 +33,8 @@ const GanttChart = () => {
     project.tasks.forEach(task => {
       data.push([
         `${project.id}-${task.name}`,
-        task.name,
+        `${task.name} (${task.assignedUser})`,
+        task.assignedUser,
         new Date(task.startDate),
         new Date(task.endDate),
         null,
@@ -45,21 +47,20 @@ const GanttChart = () => {
 
   return (
     <div>
-      <h3>Project Schedules</h3>
+      {/* <h3>Project Schedules</h3> */}
       {projects.map(project => (
         <div key={project.id}>
           <h4>{project.name}</h4>
           {project.tasks.length > 0 ? (
             <Chart
               width={'100%'}
-              height={'400px'}
               chartType="Gantt"
               loader={<div>Loading Chart</div>}
               data={getChartData(project)}
               options={{
-                height: project.tasks.length * 40 + 50, // Adjust height based on number of tasks
+                height: project.tasks.length * 50 + 50, // Adjust height based on number of tasks
                 gantt: {
-                  trackHeight: 30,
+                  trackHeight: 50,
                 },
               }}
             />

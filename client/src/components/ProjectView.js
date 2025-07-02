@@ -84,7 +84,7 @@ const ProjectView = () => {
             <th>Start Date</th>
             <th>End Date</th>
             <th>Assigned To</th>
-            <th>Actions</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>

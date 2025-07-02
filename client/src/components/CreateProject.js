@@ -24,7 +24,7 @@ const CreateProject = () => {
     <div>
       <h3>Create New Project</h3>
       <form onSubmit={onSubmit}>
-        <div className="form-group">
+        <div className="form-group mb-3">
           <label>Name: </label>
           <input type="text"
             required
@@ -33,7 +33,7 @@ const CreateProject = () => {
             onChange={e => setName(e.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group mb-3">
           <label>Description: </label>
           <input type="text"
             required
@@ -42,7 +42,7 @@ const CreateProject = () => {
             onChange={e => setDescription(e.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group mb-3">
           <input type="submit" value="Create Project" className="btn btn-primary" />
         </div>
       </form>

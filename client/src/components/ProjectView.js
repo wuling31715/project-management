@@ -53,6 +53,29 @@ const ProjectView = () => {
       <h3>{project.name}</h3>
       <p>{project.description}</p>
 
+      <h4>Add New Task</h4>
+      <form onSubmit={addTask}>
+        <div className="form-group mb-3">
+          <label>Task Name: </label>
+          <input type="text" required className="form-control" value={taskName} onChange={e => setTaskName(e.target.value)} />
+        </div>
+        <div className="form-group mb-3">
+          <label>Start Date: </label>
+          <input type="date" required className="form-control" value={startDate} onChange={e => setStartDate(e.target.value)} />
+        </div>
+        <div className="form-group mb-3">
+          <label>End Date: </label>
+          <input type="date" required className="form-control" value={endDate} onChange={e => setEndDate(e.target.value)} />
+        </div>
+        <div className="form-group mb-3">
+          <label>Assign to: </label>
+          <input type="text" required className="form-control" value={assignedUser} placeholder="Enter username" onChange={e => setAssignedUser(e.target.value)} />
+        </div>
+        <div className="form-group mb-3">
+          <input type="submit" value="Add Task" className="btn btn-primary" />
+        </div>
+      </form>
+
       <h4>Tasks</h4>
       <table className="table">
         <thead className="thead-light">
@@ -65,7 +88,13 @@ const ProjectView = () => {
           </tr>
         </thead>
         <tbody>
-          {project.tasks.map((task, index) => (
+          {project.tasks.sort((a, b) => {
+            const startDateComparison = new Date(a.startDate) - new Date(b.startDate);
+            if (startDateComparison === 0) {
+              return new Date(a.endDate) - new Date(b.endDate);
+            }
+            return startDateComparison;
+          }).map((task, index) => (
             <tr key={index}>
               <td>{task.name}</td>
               <td>{task.startDate}</td>
@@ -78,29 +107,6 @@ const ProjectView = () => {
           ))}
         </tbody>
       </table>
-
-      <h4>Add New Task</h4>
-      <form onSubmit={addTask}>
-        <div className="form-group">
-          <label>Task Name: </label>
-          <input type="text" required className="form-control" value={taskName} onChange={e => setTaskName(e.target.value)} />
-        </div>
-        <div className="form-group">
-          <label>Start Date: </label>
-          <input type="date" required className="form-control" value={startDate} onChange={e => setStartDate(e.target.value)} />
-        </div>
-        <div className="form-group">
-          <label>End Date: </label>
-          <input type="date" required className="form-control" value={endDate} onChange={e => setEndDate(e.target.value)} />
-        </div>
-        <div className="form-group">
-          <label>Assign to: </label>
-          <input type="text" required className="form-control" value={assignedUser} placeholder="Enter username" onChange={e => setAssignedUser(e.target.value)} />
-        </div>
-        <div className="form-group">
-          <input type="submit" value="Add Task" className="btn btn-primary" />
-        </div>
-      </form>
     </div>
   );
 };

@@ -5,13 +5,15 @@ import axios from 'axios';
 const CreateProject = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [manager, setManager] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const project = {
-      name: name,
-      description: description
+      name,
+      description,
+      manager
     }
 
     axios.post('http://localhost:5000/api/projects/add', project)
@@ -40,6 +42,15 @@ const CreateProject = () => {
             className="form-control"
             value={description}
             onChange={e => setDescription(e.target.value)}
+          />
+        </div>
+        <div className="form-group mb-3">
+          <label>Manager: </label>
+          <input type="text"
+            required
+            className="form-control"
+            value={manager}
+            onChange={e => setManager(e.target.value)}
           />
         </div>
         <div className="form-group mb-3">

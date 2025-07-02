@@ -8,6 +8,7 @@ const ProjectsList = () => {
   const [editProjectId, setEditProjectId] = useState(null);
   const [editName, setEditName] = useState('');
   const [editDescription, setEditDescription] = useState('');
+  const [editManager, setEditManager] = useState('');
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/projects')
@@ -30,15 +31,16 @@ const ProjectsList = () => {
     setEditProjectId(project.id);
     setEditName(project.name);
     setEditDescription(project.description);
+    setEditManager(project.manager || ''); // Initialize with existing manager or empty string
   };
 
   const handleSaveClick = (id) => {
-    const updatedProject = { name: editName, description: editDescription };
+    const updatedProject = { name: editName, description: editDescription, manager: editManager };
     axios.post(`http://localhost:5000/api/projects/update/${id}`, updatedProject)
       .then(res => {
         console.log(res.data);
         setProjects(projects.map(project => 
-          project.id === id ? { ...project, name: editName, description: editDescription } : project
+          project.id === id ? { ...project, name: editName, description: editDescription, manager: editManager } : project
         ));
         setEditProjectId(null);
       })
@@ -59,7 +61,8 @@ const ProjectsList = () => {
           <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Edit</th>
+            <th>Manager</th>
+            <th>Actions</th>
             <th>Task</th>
             <th>Delete</th>
           </tr>
@@ -89,6 +92,18 @@ const ProjectsList = () => {
                   />
                 ) : (
                   project.description
+                )}
+              </td>
+              <td>
+                {editProjectId === project.id ? (
+                  <input 
+                    type="text" 
+                    className="form-control" 
+                    value={editManager} 
+                    onChange={(e) => setEditManager(e.target.value)} 
+                  />
+                ) : (
+                  project.manager
                 )}
               </td>
               <td>

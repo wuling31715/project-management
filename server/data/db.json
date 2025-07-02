@@ -85,7 +85,8 @@
           "endDate": "2025-07-25",
           "assignedUser": "Austin"
         }
-      ]
+      ],
+      "manager": "Austin"
     },
     {
       "id": 1751381230113,
@@ -97,7 +98,8 @@
           "startDate": "2025-07-01",
           "endDate": "2025-07-24"
         }
-      ]
+      ],
+      "manager": "Peter"
     }
   ]
 }

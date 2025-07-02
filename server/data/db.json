@@ -44,53 +44,45 @@
       "tasks": [
         {
           "id": 1751480408804,
-          "name": "2024",
-          "startDate": "2024-01-01",
+          "name": "Task 3",
+          "startDate": "2025-06-01",
           "endDate": "2025-07-09",
           "assignedUser": "Brian"
         },
         {
-          "name": "long term project",
-          "startDate": "2025-01-01",
-          "endDate": "2025-07-01"
+          "id": 1751485783887,
+          "name": "Task 1",
+          "startDate": "2025-05-07",
+          "endDate": "2025-07-30",
+          "assignedUser": "Kevin"
         },
         {
           "id": 1751480491936,
-          "name": "cfbff",
+          "name": "Task 2",
           "startDate": "2025-07-01",
           "endDate": "2025-07-09",
-          "assignedUser": "fbfb"
-        },
-        {
-          "name": "r4rt",
-          "startDate": "2025-07-01",
-          "endDate": "2025-07-23"
+          "assignedUser": "Jacky"
         },
         {
           "id": 1751479469708,
-          "name": "sdvsdv",
+          "name": "Task 4",
           "startDate": "2025-07-10",
           "endDate": "2025-07-16",
           "assignedUser": "Danny"
         },
         {
-          "name": "2123123",
-          "startDate": "2025-07-11",
-          "endDate": "2025-07-31"
-        },
-        {
           "id": 1751480048696,
-          "name": "ascasc",
+          "name": "Task 5",
           "startDate": "2025-07-17",
           "endDate": "2025-07-25",
           "assignedUser": "Austin"
         },
         {
-          "id": 1751485783887,
-          "name": "HHH",
-          "startDate": "2025-05-07",
-          "endDate": "2025-07-30",
-          "assignedUser": "Kevin"
+          "id": 1751486740885,
+          "name": "Task 6",
+          "startDate": "2025-07-11",
+          "endDate": "2025-07-09",
+          "assignedUser": "Bill"
         }
       ],
       "manager": "Austin"
@@ -101,9 +93,10 @@
       "description": "qwdqwdqwd",
       "tasks": [
         {
-          "name": "qwdqwd",
+          "name": "Task 7",
           "startDate": "2025-07-01",
-          "endDate": "2025-07-24"
+          "endDate": "2025-07-24",
+          "assignedUser": "Austin"
         }
       ],
       "manager": "Peter"

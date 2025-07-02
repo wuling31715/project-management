@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Chart } from 'react-google-charts';
+import { Link } from 'react-router-dom';
 
 const GanttChart = () => {
   const [projects, setProjects] = useState([]);
@@ -50,7 +51,7 @@ const GanttChart = () => {
       {/* <h3>Project Schedules</h3> */}
       {projects.map(project => (
         <div key={project.id}>
-          <h4>{project.name}</h4>
+          <h4><Link to={`/project/${project.id}`}>{project.name}</Link></h4>
           {project.tasks.length > 0 ? (
             <Chart
               width={'100%'}

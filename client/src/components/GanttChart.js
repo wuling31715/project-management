@@ -47,7 +47,7 @@ const GanttChart = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: '20px' }}>
       {/* <h3>Project Schedules</h3> */}
       {projects.map(project => (
         <div key={project.id}>

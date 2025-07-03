@@ -1,16 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import ProjectsList from './components/ProjectsList';
 import CreateProject from './components/CreateProject';
 import ProjectView from './components/ProjectView';
 import GanttChart from './components/GanttChart';
 import Navbar from './components/Navbar';
 
-function App() {
+const AppContent = () => {
+  const location = useLocation();
+  const isGanttPage = location.pathname === '/gantt';
+
   return (
-    <Router>
+    <>
       <Navbar />
-      <div className="container mt-4">
+      <div className={isGanttPage ? '' : 'container mt-4'}>
         <Routes>
           <Route path="/" element={<ProjectsList />} />
           <Route path="/create" element={<CreateProject />} />
@@ -18,6 +21,14 @@ function App() {
           <Route path="/gantt" element={<GanttChart />} />
         </Routes>
       </div>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

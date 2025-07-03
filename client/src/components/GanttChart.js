@@ -3,9 +3,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Chart } from 'react-google-charts';
 import { Link } from 'react-router-dom';
+import TaskEditPanel from './TaskEditPanel';
 
 const GanttChart = () => {
   const [projects, setProjects] = useState([]);
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/projects')
@@ -16,6 +19,23 @@ const GanttChart = () => {
         console.log(error);
       });
   }, []);
+
+  const handleTaskSelect = (project, task) => {
+    setSelectedProject(project);
+    setSelectedTask(task);
+  };
+
+  const handleTaskSave = (updatedTask) => {
+    const updatedProjects = projects.map(p => {
+      if (p.id === selectedProject.id) {
+        return { ...p, tasks: p.tasks.map(t => t.id === updatedTask.id ? updatedTask : t) };
+      }
+      return p;
+    });
+    setProjects(updatedProjects);
+    setSelectedTask(null);
+    setSelectedProject(null);
+  };
 
   const getChartData = (project) => {
     const data = [
@@ -48,10 +68,17 @@ const GanttChart = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      {/* <h3>Project Schedules</h3> */}
+      {selectedTask && (
+        <TaskEditPanel
+          task={selectedTask}
+          project={selectedProject}
+          onSave={handleTaskSave}
+          onCancel={() => setSelectedTask(null)}
+        />
+      )}
       {projects.map(project => (
         <div key={project.id}>
-          <h4><Link to={`/project/${project.id}`}>{project.name}</Link></h4>
+          <h4><Link to={`/project/${project.id}`} style={{ textDecoration: 'none' }}>{project.name}</Link></h4>
           {project.tasks.length > 0 ? (
             <Chart
               width={'100%'}
@@ -64,6 +91,20 @@ const GanttChart = () => {
                   trackHeight: 50,
                 },
               }}
+              chartEvents={[
+                {
+                  eventName: 'select',
+                  callback: ({ chartWrapper }) => {
+                    const chart = chartWrapper.getChart();
+                    const selection = chart.getSelection();
+                    if (selection.length > 0) {
+                      const rowIndex = selection[0].row;
+                      const task = project.tasks[rowIndex];
+                      handleTaskSelect(project, task);
+                    }
+                  },
+                },
+              ]}
             />
           ) : (
             <p>No tasks for this project.</p>

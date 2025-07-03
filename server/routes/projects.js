@@ -82,5 +82,23 @@ router.route('/:id/tasks/:taskId').delete((req, res) => {
   }
 });
 
+// Update a task in a project
+router.route('/:id/tasks/:taskId').put((req, res) => {
+  let db = readDb();
+  const project = db.projects.find(p => p.id === parseInt(req.params.id));
+  if (project) {
+    const task = project.tasks.find(t => t.id === parseInt(req.params.taskId));
+    if (task) {
+      Object.assign(task, req.body);
+      writeDb(db);
+      res.json('Task updated!');
+    } else {
+      res.status(404).json('Task not found.');
+    }
+  } else {
+    res.status(404).json('Project not found.');
+  }
+});
+
 module.exports = router;
 

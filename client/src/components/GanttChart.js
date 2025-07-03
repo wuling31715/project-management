@@ -52,13 +52,21 @@ const GanttChart = () => {
     ];
 
     project.tasks.forEach(task => {
+      const startDate = new Date(task.startDate);
+      const endDate = new Date(task.endDate);
+      let duration = null;
+      // Ensure dates are valid before calculating duration
+      if (!isNaN(startDate.getTime()) && !isNaN(endDate.getTime())) {
+        duration = endDate.getTime() - startDate.getTime();
+      }
+
       data.push([
         `${project.id}-${task.name}`,
         `${task.name} (${task.assignedUser})`,
         task.assignedUser,
-        new Date(task.startDate),
-        new Date(task.endDate),
-        null,
+        startDate,
+        endDate,
+        duration,
         task.progress || 0,
         null,
       ]);

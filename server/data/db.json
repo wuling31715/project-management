@@ -40,21 +40,21 @@
     {
       "id": 1751381103084,
       "name": "Project 1",
-      "description": "GGGG",
+      "description": "",
       "tasks": [
         {
-          "id": 1751485783887,
-          "name": "Task 1",
-          "startDate": "2025-05-07",
-          "endDate": "2025-07-30",
-          "assignedUser": "Kevin",
-          "progress": 32
+          "id": 1751563457031,
+          "name": "Task 12",
+          "startDate": "2025-05-13",
+          "endDate": "2025-07-16",
+          "assignedUser": "Austin",
+          "progress": 88
         },
         {
           "id": 1751480408804,
           "name": "Task 3",
           "startDate": "2025-06-01",
-          "endDate": "2025-07-09",
+          "endDate": "2025-07-11",
           "assignedUser": "Brian",
           "progress": 10
         },
@@ -66,12 +66,11 @@
           "assignedUser": "Jacky"
         },
         {
-          "id": 1751487056340,
-          "name": "Task 8",
+          "id": 1751565516166,
+          "name": "Task 33",
           "startDate": "2025-07-03",
-          "endDate": "2025-09-11",
-          "assignedUser": "Danny",
-          "progress": 100
+          "endDate": "2025-07-09",
+          "assignedUser": "Lily"
         },
         {
           "id": 1751479469708,
@@ -81,6 +80,14 @@
           "assignedUser": "Danny"
         },
         {
+          "id": 1751565217888,
+          "name": "Task 15",
+          "startDate": "2025-07-15",
+          "endDate": "2025-07-25",
+          "assignedUser": "Kevin",
+          "progress": 0
+        },
+        {
           "id": 1751480048696,
           "name": "Task 5",
           "startDate": "2025-07-17",
@@ -88,12 +95,12 @@
           "assignedUser": "Austin"
         },
         {
-          "id": 1751563457031,
-          "name": "Task 12",
-          "startDate": "2025-05-13",
-          "endDate": "2025-07-16",
+          "id": 1751566741254,
+          "name": "Task 37",
+          "startDate": "2025-07-09",
+          "endDate": "2025-07-19",
           "assignedUser": "Austin",
-          "progress": 7
+          "progress": 0
         }
       ],
       "manager": "Austin"
@@ -101,7 +108,7 @@
     {
       "id": 1751381230113,
       "name": "Project 2",
-      "description": "qwdqwdqwd",
+      "description": "",
       "tasks": [
         {
           "name": "Task 7",

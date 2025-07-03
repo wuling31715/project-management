@@ -59,7 +59,7 @@ const GanttChart = () => {
         new Date(task.startDate),
         new Date(task.endDate),
         null,
-        0,
+        task.progress || 0,
         null,
       ]);
     });

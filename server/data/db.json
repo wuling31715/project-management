@@ -47,14 +47,16 @@
           "name": "Task 1",
           "startDate": "2025-05-07",
           "endDate": "2025-07-30",
-          "assignedUser": "Kevin"
+          "assignedUser": "Kevin",
+          "progress": 32
         },
         {
           "id": 1751480408804,
           "name": "Task 3",
           "startDate": "2025-06-01",
           "endDate": "2025-07-09",
-          "assignedUser": "Brian"
+          "assignedUser": "Brian",
+          "progress": 10
         },
         {
           "id": 1751480491936,
@@ -68,7 +70,8 @@
           "name": "Task 8",
           "startDate": "2025-07-03",
           "endDate": "2025-09-11",
-          "assignedUser": "Danny"
+          "assignedUser": "Danny",
+          "progress": 100
         },
         {
           "id": 1751479469708,
@@ -89,7 +92,8 @@
           "name": "Task 12",
           "startDate": "2025-05-13",
           "endDate": "2025-07-16",
-          "assignedUser": "Austin"
+          "assignedUser": "Austin",
+          "progress": 7
         }
       ],
       "manager": "Austin"

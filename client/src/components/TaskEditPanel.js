@@ -6,10 +6,16 @@ const TaskEditPanel = ({ task, project, onSave, onCancel }) => {
   const [startDate, setStartDate] = useState(task.startDate);
   const [endDate, setEndDate] = useState(task.endDate);
   const [assignedUser, setAssignedUser] = useState(task.assignedUser);
+  const [progress, setProgress] = useState(task.progress || 0);
+
+  const handleProgressChange = (e) => {
+    const value = Math.max(0, Math.min(100, Number(e.target.value)));
+    setProgress(value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedTask = { ...task, name: taskName, startDate, endDate, assignedUser };
+    const updatedTask = { ...task, name: taskName, startDate, endDate, assignedUser, progress: Number(progress) };
     axios.put(`http://localhost:5000/api/projects/${project.id}/tasks/${task.id}`, updatedTask)
       .then(res => {
         onSave(updatedTask);
@@ -61,6 +67,10 @@ const TaskEditPanel = ({ task, project, onSave, onCancel }) => {
               <div className="form-group mb-3">
                 <label>Assigned To</label>
                 <input type="text" className="form-control" value={assignedUser} onChange={e => setAssignedUser(e.target.value)} />
+              </div>
+              <div className="form-group mb-3">
+                <label>Progress</label>
+                <input type="number" className="form-control" value={progress} min="0" max="100" onChange={handleProgressChange} />
               </div>
               <button type="submit" className="btn btn-primary">Save</button>
               <button type="button" className="btn btn-secondary ms-2" onClick={onCancel}>Cancel</button>

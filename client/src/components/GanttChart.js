@@ -4,11 +4,14 @@ import axios from 'axios';
 import { Chart } from 'react-google-charts';
 import { Link } from 'react-router-dom';
 import TaskEditPanel from './TaskEditPanel';
+import AddTaskPanel from './AddTaskPanel';
 
 const GanttChart = () => {
   const [projects, setProjects] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showAddTaskModal, setShowAddTaskModal] = useState(false);
+  const [projectForNewTask, setProjectForNewTask] = useState(null);
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/projects')
@@ -35,6 +38,28 @@ const GanttChart = () => {
     setProjects(updatedProjects);
     setSelectedTask(null);
     setSelectedProject(null);
+  };
+
+  const handleAddTaskClick = (project) => {
+    setProjectForNewTask(project);
+    setShowAddTaskModal(true);
+  };
+
+  const handleNewTaskSave = (newTask) => {
+    const updatedProjects = projects.map(p => {
+      if (p.id === projectForNewTask.id) {
+        return { ...p, tasks: [...p.tasks, newTask] };
+      }
+      return p;
+    });
+    setProjects(updatedProjects);
+    setShowAddTaskModal(false);
+    setProjectForNewTask(null);
+  };
+
+  const handleAddTaskCancel = () => {
+    setShowAddTaskModal(false);
+    setProjectForNewTask(null);
   };
 
   const getChartData = (project) => {
@@ -84,9 +109,19 @@ const GanttChart = () => {
           onCancel={() => setSelectedTask(null)}
         />
       )}
+      {showAddTaskModal && projectForNewTask && (
+        <AddTaskPanel
+          project={projectForNewTask}
+          onSave={handleNewTaskSave}
+          onCancel={handleAddTaskCancel}
+        />
+      )}
       {projects.map(project => (
         <div key={project.id}>
-          <h4><Link to={`/project/${project.id}`} style={{ textDecoration: 'none' }}>{project.name}</Link></h4>
+          <h4 className="d-flex justify-content-between align-items-center">
+            <Link to={`/project/${project.id}`} style={{ textDecoration: 'none' }}>{project.name}</Link>
+            <button className="btn btn-primary btn-sm" onClick={() => handleAddTaskClick(project)}>Add Task</button>
+          </h4>
           {project.tasks.length > 0 ? (
             <Chart
               width={'100%'}

@@ -101,6 +101,14 @@
           "endDate": "2025-07-19",
           "assignedUser": "Austin",
           "progress": 0
+        },
+        {
+          "id": 1751567105233,
+          "name": "Task 88",
+          "startDate": "2025-07-07",
+          "endDate": "2025-07-25",
+          "assignedUser": "Dave",
+          "progress": 0
         }
       ],
       "manager": "Austin"
